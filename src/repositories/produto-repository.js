@@ -3,13 +3,13 @@
 const mongoose = require("mongoose");
 const Product = mongoose.model('Produto');
 
-// exports.get = async () => {
-//     const res = await Product
-//         .find({
-//             active: true
-//         }, 'nome preco slug');
-//     return res;
-// }
+exports.get = async () => {
+    const res = await Product
+        .find({
+            active: true
+        }, 'nome preco slug');
+    return res;
+}
 
 exports.getBySlug = async (slug) => {
     const res = await Product.findOne({
