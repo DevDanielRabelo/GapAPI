@@ -19,35 +19,10 @@ exports.getBySlug = async (slug) => {
     return res;
 }
 
-exports.getById = async (id) => {
-    const res = await Product.findById(id);
-    return res;
-}
-
 exports.getByTag = async (tag) => {
     const res = await Product.find({
         tags: tag,
         active: true
     }, 'nome descricao preco slug tags');
     return res;
-}
-
-exports.create = async (data) => {
-    var product = new Product(data);
-    await product.save();
-}
-
-exports.update = async (id, data) => {
-    await Product.findByIdAndUpdate(id, {
-        $set: {
-            nome: data.nome,
-            descricao: data.descricao,
-            preco: data.preco,
-            slug: data.slug
-        }
-    });
-}
-
-exports.delet = async (id) => {
-    await Product.findOneAndRemove(id);
 }
