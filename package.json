@@ -6,6 +6,7 @@
   "bin": {
     "gapapi": "server.js"
   },
+  "engines": {"node":"10.14.1"},
   "dependencies": {
     "body-parse": "^0.1.0",
     "express": "^4.17.1",
