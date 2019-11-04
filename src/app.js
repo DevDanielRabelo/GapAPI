@@ -10,9 +10,12 @@ const app = express();
 //Conect ao banco
 mongoose.connect(config.connectionString);
 
+//Carregar os Models
+const Product = require('./models/produto');
 
 //Carregar as Rotas
 const indexRoute = require('./routes/index-route');
+const productRoute = require('./routes/product-route');
 
 app.use(bodyParser.json({
     limit: '5mb'
@@ -28,5 +31,6 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', indexRoute);
+app.use('/produtos', productRoute);
 
 module.exports = app;
