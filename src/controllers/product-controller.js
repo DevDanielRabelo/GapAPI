@@ -117,10 +117,8 @@ exports.put = async (req, res, next) => {
 
 exports.delet = async (req, res, next) => {
     try {
-        await repository.delet(req.body.id);
-        res.status(200).send({
-            massage: 'Produto removido com sucesso!'
-        });
+        var products = await repository.delet(req.body.id);
+        res.status(200).send(products);
     } catch (e) {
         res.status(500).send({
             massage: 'Falha ao processar sua requisição'

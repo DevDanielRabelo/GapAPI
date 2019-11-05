@@ -46,4 +46,5 @@ exports.update = async (id, data) => {
 
 exports.delet = async (id) => {
     await Product.findOneAndRemove(id);
+    return this.get();
 }
