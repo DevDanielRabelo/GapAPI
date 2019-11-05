@@ -70,7 +70,7 @@ exports.post = async (req, res, next) => {
         //     }
         // });
 
-        await repository.create({
+        var product = await repository.create({
             nome: req.body.nome,
             slug: req.body.slug,
             descricao: req.body.descricao,
@@ -79,9 +79,16 @@ exports.post = async (req, res, next) => {
             tags: req.body.tags,
             images: req.body.images
         });
-        res.status(201).send({ massage: 'Produto cadastrado com sucesso!' });
+
+        res.status(201).send(product = {
+            nome: product.nome,
+            slug: product.slug,
+            descricao: product.descricao,
+            preco: product.preco
+        });
+
     } catch (e) {
-        if(e.errmsg){
+        if (e.errmsg) {
             res.status(500).send({
                 massage: e.errmsg,
                 data: e
