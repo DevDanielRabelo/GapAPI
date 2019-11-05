@@ -81,6 +81,12 @@ exports.post = async (req, res, next) => {
         });
         res.status(201).send({ massage: 'Produto cadastrado com sucesso!' });
     } catch (e) {
+        if(e.errmsg){
+            res.status(500).send({
+                massage: e.errmsg,
+                data: e
+            });
+        }
         res.status(500).send({
             massage: 'Falha ao processar sua requisição',
             data: e

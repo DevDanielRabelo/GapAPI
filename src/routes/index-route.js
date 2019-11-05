@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
     res.status(200).send({
         title: "GAP-1 API",
-        version: "0.0.0"
+        version: "1.0.0"
     });
 });
 

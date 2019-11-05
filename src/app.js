@@ -8,14 +8,16 @@ const config = require('./config');
 const app = express();
 
 //Conect ao banco
-mongoose.connect('mongodb://gap-bd:tV95FEuTXywlezOrQbpR02KcS9AgVdCJaZHVzh8X3NYvUU3Hyl47xZWaI5snFnK5G7kd7mKPyeW0v8lqCxaKeg%3D%3D@gap-bd.documents.azure.com:10255/?ssl=true');
+mongoose.connect(config.connectionString);
 
 //Carregar os Models
 const Product = require('./models/produto');
+const User = require('./models/user')
 
 //Carregar as Rotas
 const indexRoute = require('./routes/index-route');
 const productRoute = require('./routes/product-route');
+const userRoute = require('./routes/user-route');
 
 app.use(bodyParser.json({
     limit: '5mb'
@@ -32,5 +34,6 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRoute);
 app.use('/produtos', productRoute);
+app.use('/usuarios', userRoute);
 
 module.exports = app;
