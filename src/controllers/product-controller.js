@@ -84,7 +84,8 @@ exports.post = async (req, res, next) => {
             nome: product.nome,
             slug: product.slug,
             descricao: product.descricao,
-            preco: product.preco
+            preco: product.preco,
+            active: product.active
         });
 
     } catch (e) {
