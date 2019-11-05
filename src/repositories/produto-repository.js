@@ -26,3 +26,23 @@ exports.getByTag = async (tag) => {
     }, 'nome descricao preco slug tags');
     return res;
 }
+
+exports.create = async (data) => {
+    var product = new Product(data);
+    await product.save();
+}
+
+exports.update = async (id, data) => {
+    await Product.findByIdAndUpdate(id, {
+        $set: {
+            nome: data.nome,
+            descricao: data.descricao,
+            preco: data.preco,
+            slug: data.slug
+        }
+    });
+}
+
+exports.delet = async (id) => {
+    await Product.findOneAndRemove(id);
+}
