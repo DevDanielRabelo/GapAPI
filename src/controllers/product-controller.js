@@ -81,6 +81,7 @@ exports.post = async (req, res, next) => {
         });
 
         res.status(201).send(product = {
+            _id: product._id,
             nome: product.nome,
             slug: product.slug,
             descricao: product.descricao,
